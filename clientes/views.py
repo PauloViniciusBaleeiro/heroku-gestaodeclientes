@@ -9,6 +9,7 @@ def person_list(request):
     persons = Person.objects.all()
     return render(request, 'person.html', {'persons':  persons} )
 
+
 @login_required
 def person_new(request):
     form = PersonForm(request.POST or None, request.FILES or None)
@@ -17,6 +18,7 @@ def person_new(request):
         form.save()
         return redirect('person_list')
     return render(request, 'person_form.html', {'form': form})
+
 
 @login_required
 def person_update(request, id):
@@ -27,6 +29,7 @@ def person_update(request, id):
         form.save()
         return redirect('person_list')
     return render(request, 'person_form.html', {'form': form})
+
 
 @login_required
 def person_delete(request, id):
